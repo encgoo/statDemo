@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<title>Statistics and Poker Game</title>
+		<link rel="stylesheet" href="css/common.css" type="text/css" media="screen"  charset="utf-8">
+		
+		<script src="javascript/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="javascript/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="javascript/probabilities.js" type="text/javascript" charset="utf-8"></script>
+		<script src="javascript/diy.js" type="text/javascript" charset="utf-8"></script>
+
+		<script> 
+		  function compare(){checkWin(); document.getElementById("msg").innerHTML="You Win!";}
+		</script>
+	</head>
+	<body> 
+	<h1> Statistics and Poker Game</h1>
+	  <div id="explanation">
+	    This is a simple poker game in javascript. Here all 5 of the dealer's cards and 4 (of 5) of the player's cards are shown. Who is going to win depends on the last card. It is all above <i><b>STATISTICS</b></i>. See if you can do better than the computer! 
+	    <ul>
+                    <li>
+                      Make your prediction by clicking the "User Will Win" button <i>or</i> the "Dealer Will Win" button.
+                    </li>
+                    <li>
+                      Then the app is going to do its prediction as well according to statistics, and updates the table below.
+                    </li>
+                    <li>
+                      Click "Show Last Card", and then the last card will be shown. You can then
+                see whether you have made a better prediction than the app or not.
+                    </li>
+		    <li> Click "Start New Game" to try a new one.</li>
+            </ul>
+	  </div>
+		<div id="page" style="background-image: url(images/tablebackground.png); height:395px; width:415px; border:3px; border-style:outset">
+			<div id="river">
+			  <h3>Dealer:</h3>
+			</div>
+			<div id="player-cards">
+			  <h3>Player:</h3>
+			</div>
+		  <br>
+		  <hr style="color: lightgray; background-color: lightgray; border-color: lightgray; height=1px;">
+		   <center>
+		  <input type="button" class="myButton" name="more" value="Player Will Win" onclick="predictPlayerWin(true);">
+                  <input type="button" class="myButton" name="check" value="Dealer Will Win" onclick="predictPlayerWin(false);">
+		  <input type="button" class="myButton" name="show" value="Show Last Card" onclick="lastCard();">
+		  <br>
+		  <input type="button" class="myButton1" name="newgame" value="Start New Game" onclick="location.reload();">
+		    </center>
+		  </div>
+		
+		<div>
+		<p id="msg">See if you can do better than the computer!   
+		</p> 
+		
+		<h2><b> Table of Probabilities</b></h2>
+		
+		<table>
+		  <tr> 
+		    <th> Score </th>        
+		    <th> Player Probability</th>      
+		    <th> Dealer Probability </th>
+		  </tr>
+		  <tr>
+		    <th> Royal Flush</th>   <td id="plroyal"></td>            <td id="dlroyal"></td>
+		  </tr>
+		  <tr>
+		    <th> Straight Flush</th><td id="plstraightf"></td>        <td id="dlstraightf"></td>
+		  </tr>
+		  <tr>
+		    <th> 4 Kind</th>        <td id="pl4k"></td>               <td id="dl4k"></td>
+		  </tr>
+		  <tr>
+		    <th> Full House</th>    <td id="plfullhouse"></td>        <td id="dlfullhouse"></td>
+		  </tr><tr>
+		    <th> Flush</th>         <td id="plflush"></td>            <td id="dlflush"></td>
+		  </tr><tr>
+		    <th> Straight</th>      <td id="plstraight"></td>         <td id="dlstraight"></td>
+		  </tr><tr>
+		    <th> 3 Kind</th>        <td id="pl3k"></td>               <td id="dl3k"></td>
+		  </tr><tr>
+		    <th> 2 Pairs</th>       <td id="pl2pair"></td>            <td id="dl2pair"></td>
+		  </tr><tr>
+		    <th> 1 Pair</th>        <td id="plpair"></td>             <td id="dlpair"></td>
+		  </tr><tr>
+		    <th> High Card</th>     <td id="plhigh"></td>             <td id="dlhigh"></td>
+		  </tr>
+		  <tr>
+		    <th> Winning</th>     <td id="plwin"></td>             <td id="dlwin"></td>
+		  </tr>
+		  <tr>
+   		    <th id="diytitle">DIY</th> <td id="diypl"></td>       <td>----</td>
+		  </tr>
+		</table>
+		<p id="dlresult"></p>
+		<p id="final"></p>
+		</div>
+	</body>
+</html>
